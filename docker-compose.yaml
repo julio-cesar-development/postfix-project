@@ -1,0 +1,63 @@
+version: "3.4"
+
+services:
+  postfix:
+    container_name: postfix
+    hostname: postfix
+    build:
+      context: ./postfix
+      args:
+        SMTP_HOST: ${SMTP_HOST}
+        SMTP_PORT: ${SMTP_PORT}
+    environment:
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_SUBJECT: ${MAIL_SUBJECT}
+      SMTP_SENDER: ${SMTP_SENDER}
+      MAIL_RECIPIENT: ${MAIL_RECIPIENT}
+    networks:
+      - subnet_0
+    restart: "no"
+    volumes: []
+
+  app:
+    container_name: app
+    hostname: app
+    image: juliocesarmidia/app:latest
+    build:
+      context: ./app
+    ports: []
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_SUBJECT: ${MAIL_SUBJECT}
+      SMTP_SENDER: ${SMTP_SENDER}
+      MAIL_RECIPIENT: ${MAIL_RECIPIENT}
+    networks:
+      - subnet_0
+    restart: "no"
+    volumes:
+      - ./app/:/usr/src/app:rw
+
+  mailhog:
+    container_name: mailhog
+    hostname: mailhog
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - 11025:1025
+      - 18025:8025
+    environment: {}
+    networks:
+      - subnet_0
+    restart: "on-failure"
+    volumes: []
+
+networks:
+  subnet_0:
+    driver: bridge
+
+volumes: {}
+
+secrets: {}

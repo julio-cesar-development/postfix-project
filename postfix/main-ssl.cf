@@ -1,3 +1,4 @@
+myhostname=postfix
 relayhost=[${SMTP_HOST}]:${SMTP_PORT}
 smtp_sasl_auth_enable = yes
 smtp_sasl_security_options = noanonymous

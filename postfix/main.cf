@@ -1,0 +1,4 @@
+myhostname=postfix
+relayhost=[${SMTP_HOST}]:${SMTP_PORT}
+smtp_sasl_auth_enable = no
+smtp_use_tls = no

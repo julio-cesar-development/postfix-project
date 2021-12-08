@@ -1,18 +1,23 @@
-# Postfix Project
+# Postfix and Mailhog Project
 
 [![GitHub Status](https://badgen.net/github/status/julio-cesar-development/postfix-project)](https://github.com/julio-cesar-development/postfix-project)
 ![License](https://badgen.net/badge/license/MIT/blue)
 
-> This is a simple project to try out Postfix to send a sample email using some SMTP email server.<br>
+> This is a simple project to try out Postfix to send a sample email using Mailhog.<br>
 
 ---
 
 ## Instructions
 
-> Fill the variables on [.env.sample](./.env.sample)
-
 > Running
 
 ```bash
-docker-compose up
+docker-compose up -d mailhog
+docker-compose logs -f postfix
+
+docker-compose up -d --build postfix
+docker-compose logs -f postfix
+
+docker-compose up -d --build app
+docker-compose logs -f app
 ```
