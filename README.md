@@ -1,6 +1,5 @@
 # Postfix and Mailhog Project
 
-[![GitHub Status](https://badgen.net/github/status/julio-cesar-development/postfix-project)](https://github.com/julio-cesar-development/postfix-project)
 ![License](https://badgen.net/badge/license/MIT/blue)
 
 > This is a simple project to try out Postfix to send a sample email using Mailhog.<br>
