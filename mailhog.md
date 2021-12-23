@@ -1,6 +1,6 @@
-## MailHog
+# MailHog
 
-MailHog default settings:
+## MailHog default settings:
 
 the SMTP server starts on port 1025
 the HTTP server starts on port 8025
@@ -12,6 +12,9 @@ Port mapping used:
 
 ## API
 
-# get messages
+### get messages
+
+```bash
 curl -X GET 'http://localhost:18025/api/v2/messages'
 curl -X GET 'http://localhost:18025/api/v2/messages' | jq -r '.items'
+```
